@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Global from "./Global";
 import {
   AboutusPage,
@@ -14,7 +14,7 @@ import PublicRoute from "./routes/PublicRoute";
 
 function App() {
   return (
-    <BrowserRouter>
+    <>
       <Global />
       <Routes>
         <Route element={<PublicRoute />}>
@@ -28,7 +28,7 @@ function App() {
           <Route path="login" element={<LoginPage />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </>
   );
 }
 
