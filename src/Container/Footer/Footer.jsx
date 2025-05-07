@@ -71,8 +71,8 @@ const Footer = () => (
         </Paragraph>
 
         <Paragraph>
-          <Developer href="https://mail.unitrendinternational.com">
-            Webmail
+          <Developer href="https://purepacbd.s3.ap-southeast-1.amazonaws.com/b9715a2c-1460-4141-93b9-4b0e6e3b8bae.pdf">
+           Company Profile 
           </Developer>
         </Paragraph>
       </FooterLink>
