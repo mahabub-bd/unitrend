@@ -71,7 +71,7 @@ const Footer = () => (
         </Paragraph>
 
         <Paragraph>
-          <Developer href="company-profile">Company Profile</Developer>
+          <Developer href="profile">Company Profile</Developer>
         </Paragraph>
       </FooterLink>
     </FooterLinks>

@@ -4,12 +4,12 @@ import Global from "./Global";
 import {
   AboutusPage,
   BlogPage,
-  CompanyProfilePage,
   ContactusPage,
   HomePage,
   LoginPage,
   NotFound,
   ProductPage,
+  ProfilePage,
   SupportPage,
 } from "./pages";
 import PublicRoute from "./routes/PublicRoute";
@@ -28,7 +28,7 @@ function App() {
           <Route path="Blog" element={<BlogPage />} />
           <Route path="contact" element={<ContactusPage />} />
           <Route path="login" element={<LoginPage />} />
-          <Route path="company-profile" element={<CompanyProfilePage />} />
+          <Route path="profile" element={<ProfilePage />} />
         </Route>
       </Routes>
     </>
