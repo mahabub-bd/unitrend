@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { images } from "../../Constants";
 import {
   Image,
@@ -29,7 +29,6 @@ const navItems = [
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
 
   const handleScroll = () => {
     const offset = window.scrollY;
@@ -42,7 +41,7 @@ const Navbar = () => {
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
   });
-  console.log(location.pathname);
+
   return (
     <NavBar className={scrolled ? "scrolled" : "navbar"}>
       <NavBarLogo>
