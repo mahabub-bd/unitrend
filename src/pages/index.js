@@ -21,5 +21,3 @@ export {
   SignUpPage,
   SupportPage,
 };
-
-//

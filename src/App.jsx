@@ -1,9 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import PDFViewer from "./Components/pdf/pdf-reader";
+
 import Global from "./Global";
 import {
   AboutusPage,
   BlogPage,
+  CompanyProfilePage,
   ContactusPage,
   HomePage,
   LoginPage,
@@ -27,7 +28,7 @@ function App() {
           <Route path="Blog" element={<BlogPage />} />
           <Route path="contact" element={<ContactusPage />} />
           <Route path="login" element={<LoginPage />} />
-          <Route path="company-profile" element={<PDFViewer />} />
+          <Route path="company-profile" element={<CompanyProfilePage />} />
         </Route>
       </Routes>
     </>
