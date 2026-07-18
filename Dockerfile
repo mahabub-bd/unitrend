@@ -1,8 +1,18 @@
 # Stage 1: Build the application
 FROM node:20-alpine AS builder
 
-# Install pnpm
-RUN npm install -g pnpm@9
+# Install pnpm and build dependencies for native modules
+RUN npm install -g pnpm@9 && \
+    apk add --no-cache \
+    python3 \
+    make \
+    g++ \
+    cairo-dev \
+    jpeg-dev \
+    pango-dev \
+    giflib-dev \
+    pixman-dev \
+    pkgconfig
 
 # Set working directory
 WORKDIR /app
@@ -10,8 +20,8 @@ WORKDIR /app
 # Copy package files
 COPY package.json pnpm-lock.yaml ./
 
-# Install dependencies
-RUN pnpm install --frozen-lockfile
+# Install dependencies (ignore scripts to avoid native module build issues)
+RUN pnpm install --frozen-lockfile --ignore-scripts
 
 # Copy source code
 COPY . .

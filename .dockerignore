@@ -15,6 +15,9 @@ Dockerfile
 docker-compose.yml
 .dockerignore
 
+# Package manager workspace files (not needed for single-package projects)
+pnpm-workspace.yaml
+
 # IDE
 .vscode
 .idea
