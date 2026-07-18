@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: unitrend-app
+    ports:
+      - "80:80"
+    restart: unless-stopped
+    networks:
+      - unitrend-network
+
+  # Development service (optional - for hot reload during development)
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: unitrend-dev
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+    restart: unless-stopped
+    networks:
+      - unitrend-network
+    profiles:
+      - dev
+
+networks:
+  unitrend-network:
+    driver: bridge
