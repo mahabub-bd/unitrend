@@ -1,0 +1,110 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model SiteSetting {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  value     String
+  updatedAt DateTime @updatedAt
+}
+
+model Principal {
+  id       String  @id @default(cuid())
+  name     String
+  subtitle String?
+  website  String
+  imageUrl String
+  sortOrder Int    @default(0)
+  active   Boolean @default(true)
+}
+
+model FeaturedProduct {
+  id        String  @id @default(cuid())
+  title     String
+  subtitle  String?
+  imageUrl  String
+  sortOrder Int     @default(0)
+  active    Boolean @default(true)
+}
+
+model Strategy {
+  id        String  @id @default(cuid())
+  title     String
+  subtitle  String
+  imageUrl  String
+  sortOrder Int     @default(0)
+  active    Boolean @default(true)
+}
+
+model AboutSection {
+  id        String  @id @default(cuid())
+  title     String
+  subtitle  String?
+  details   String
+  sortOrder Int     @default(0)
+  active    Boolean @default(true)
+}
+
+model SupportItem {
+  id        String  @id @default(cuid())
+  title     String
+  details   String
+  sortOrder Int     @default(0)
+  active    Boolean @default(true)
+}
+
+model ProductCategory {
+  id         String        @id @default(cuid())
+  name       String
+  slug       String        @unique
+  showType   Boolean       @default(true)
+  showBrand  Boolean       @default(false)
+  sortOrder  Int           @default(0)
+  active     Boolean       @default(true)
+  products   ProductItem[]
+}
+
+model ProductItem {
+  id         String          @id @default(cuid())
+  categoryId String
+  category   ProductCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  name       String
+  type       String?
+  brand      String?
+  origin     String
+  application String
+  sortOrder  Int             @default(0)
+  active     Boolean         @default(true)
+}
+
+model BlogPost {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  category    String
+  excerpt     String
+  content     String
+  imageUrl    String
+  readTime    String?
+  published   Boolean  @default(false)
+  publishedAt DateTime @default(now())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String?
+  message   String
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}

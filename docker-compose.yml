@@ -1,6 +1,21 @@
 version: '3.8'
 
 services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: unitrend-postgres
+    environment:
+      POSTGRES_DB: unitrend
+      POSTGRES_USER: unitrend
+      POSTGRES_PASSWORD: unitrend
+    ports:
+      - "5432:5432"
+    volumes:
+      - unitrend-postgres:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - unitrend-network
+
   app:
     build:
       context: .
@@ -11,6 +26,12 @@ services:
     restart: unless-stopped
     networks:
       - unitrend-network
+    environment:
+      DATABASE_URL: postgresql://unitrend:unitrend@postgres:5432/unitrend
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-change-this-password}
+      ADMIN_SESSION_SECRET: ${ADMIN_SESSION_SECRET:-change-this-long-random-secret}
+    depends_on:
+      - postgres
 
   # Development service (optional - for hot reload during development)
   dev:
@@ -32,3 +53,6 @@ services:
 networks:
   unitrend-network:
     driver: bridge
+
+volumes:
+  unitrend-postgres:

@@ -1,27 +1,15 @@
 # Stage 1: Build the application
-FROM node:20-alpine AS builder
+FROM node:24-alpine AS builder
 
-# Install pnpm and build dependencies for native modules
-RUN npm install -g pnpm@9 && \
-    apk add --no-cache \
-    python3 \
-    make \
-    g++ \
-    cairo-dev \
-    jpeg-dev \
-    pango-dev \
-    giflib-dev \
-    pixman-dev \
-    pkgconfig
+RUN npm install -g pnpm@9
 
-# Set working directory
 WORKDIR /app
 
 # Copy package files
 COPY package.json pnpm-lock.yaml ./
 
-# Install dependencies (ignore scripts to avoid native module build issues)
-RUN pnpm install --frozen-lockfile --ignore-scripts
+# Install dependencies
+RUN pnpm install --frozen-lockfile
 
 # Copy source code
 COPY . .
@@ -29,17 +17,21 @@ COPY . .
 # Build the application
 RUN pnpm build
 
-# Stage 2: Production server with nginx
-FROM nginx:alpine
+# Stage 2: Production server
+FROM node:24-alpine
 
-# Copy built assets from builder stage
-COPY --from=builder /app/dist /usr/share/nginx/html
+WORKDIR /app
 
-# Copy custom nginx config
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+ENV NODE_ENV=production
 
-# Expose port 80
-EXPOSE 80
+# Copy built application from builder stage
+COPY --from=builder /app/package.json ./package.json
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/.next ./.next
+COPY --from=builder /app/public ./public
 
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Expose the Next.js port
+EXPOSE 8000
+
+# Start production server
+CMD ["pnpm", "start"]

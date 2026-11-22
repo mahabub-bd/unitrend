@@ -1,0 +1,100 @@
+@config "../../tailwind.config.ts";
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  body {
+    @apply box-border bg-porcelain font-alt text-ink antialiased;
+  }
+
+  ::selection {
+    background-color: #69010e;
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid #970213;
+    outline-offset: 3px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  img {
+    max-width: 100%;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+@layer components {
+  /* Equivalent of the old SectionPadding global wrapper */
+  .section-padding {
+    @apply px-6 py-16 tablet:px-8 tablet:py-16 laptop:px-16 laptop:py-16 laptopL:px-24 laptopL:py-8 desktop:py-24;
+  }
+
+  .paragraph-1 {
+    @apply font-alt tracking-[0.04em] capitalize leading-8 text-xl text-left laptopL:text-base laptopL:leading-7.5 tablet:text-lg mobileL:text-base desktop:text-[2.3rem] desktop:leading-16;
+  }
+
+  .paragraph-2 {
+    @apply font-alt text-ink text-left tracking-[0.04em] capitalize font-normal leading-7 text-lg tablet:text-base mobileL:text-sm desktop:text-3xl desktop:leading-12;
+  }
+
+  @media (min-width: 850px) {
+    .paragraph-2 {
+      margin-top: 4rem;
+      margin-bottom: 4rem;
+    }
+  }
+
+  .custom-button {
+    @apply bg-primary text-white font-base font-bold tracking-[0.04em] leading-7 text-base text-center px-6 py-2 rounded-sm border-none outline-none cursor-pointer transition-all duration-300 hover:bg-white hover:text-primary hover:shadow-[1px_1px_1px_1px_#69010E] mobileL:px-3 mobileL:py-1 mobileL:text-sm;
+  }
+
+  .flex-wrapper {
+    @apply flex justify-between items-center min-h-[60vh] laptopL:min-h-[30vh] laptop:min-h-[25vh] tablet:flex-col tablet:min-h-[20vh] tablet:justify-center tablet:items-center;
+  }
+
+  .wrapper-info {
+    @apply flex-1 w-full flex justify-center items-start flex-col laptop:mt-12 tablet:items-center;
+  }
+
+  .wrapper-image {
+    @apply flex-1 w-full flex justify-end items-center ml-8 laptop:mt-20 tablet:justify-center;
+  }
+
+  .wrapper-image-reverse {
+    @apply flex-1 w-full flex justify-start items-center mr-8 laptop:mt-20 tablet:justify-center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
