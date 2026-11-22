@@ -36,5 +36,5 @@ COPY --from=builder /app/public ./public
 # Expose the Next.js port
 EXPOSE 8000
 
-# Start production server
-CMD ["pnpm", "start"]
+# Start production server (pnpm is not installed in this stage)
+CMD ["node_modules/next/dist/bin/next", "start", "-p", "8000"]
