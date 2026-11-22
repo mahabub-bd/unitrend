@@ -1,6 +1,7 @@
+import PublicChrome from "@/components/layout/PublicChrome";
 import type { Metadata } from "next";
 import { Comfortaa, Montserrat } from "next/font/google";
-import PublicChrome from "@/components/layout/PublicChrome";
+import Link from "next/link";
 import "./globals.css";
 
 // The site is database-driven; render on demand instead of prerendering at
@@ -93,12 +94,12 @@ export default function RootLayout({
             }),
           }}
         />
-        <a
+        <Link
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-primary focus:px-5 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-200 focus:rounded-full focus:bg-primary focus:px-5 focus:py-2.5 focus:text-sm focus:font-semibold focus:text-white"
         >
           Skip to content
-        </a>
+        </Link>
         <PublicChrome>{children}</PublicChrome>
       </body>
     </html>
