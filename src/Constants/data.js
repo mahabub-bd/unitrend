@@ -5,8 +5,10 @@ const contact = {
   email1: "admin@unitrendinternational.com",
   email2: "admin@unitrendbd.net",
 
+  // address:
+  //   "Noor Tower 8a, 7th Floor. House : 29/31, Road : 01, Sector : 02, Block : D, Jahurul Islam City, Aftab Nagar, Dhaka-1212",
   address:
-    "Noor Tower 8a, 7th Floor. House : 29/31, Road : 01, Sector : 02, Block : D, Jahurul Islam City, Aftab Nagar, Dhaka-1212",
+    "178, Uttar Guran, Khilgaon, Dhaka-1219, Bangladesh",
 };
 
 const principals = [
