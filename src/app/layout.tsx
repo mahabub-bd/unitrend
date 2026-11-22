@@ -3,6 +3,10 @@ import { Comfortaa, Montserrat } from "next/font/google";
 import PublicChrome from "@/components/layout/PublicChrome";
 import "./globals.css";
 
+// The site is database-driven; render on demand instead of prerendering at
+// build time (no DB is available during the Docker build).
+export const dynamic = "force-dynamic";
+
 const comfortaa = Comfortaa({
   subsets: ["latin"],
   variable: "--font-comfortaa",
