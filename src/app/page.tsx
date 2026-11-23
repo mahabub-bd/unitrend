@@ -4,6 +4,7 @@ import Principals from "@/components/Principals/Principals";
 import AboutPreview from "@/components/About/AboutPreview";
 import OurStrategies from "@/components/OurStrategies/OurStrategies";
 import FeatureProducts from "@/components/FeatureProducts/FeatureProducts";
+import SupportPreview from "@/components/Support/SupportPreview";
 import CtaBanner from "@/components/Cta/CtaBanner";
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ export default function HomePage() {
       <AboutPreview />
       <OurStrategies />
       <FeatureProducts />
+      <SupportPreview />
       <CtaBanner />
     </>
   );

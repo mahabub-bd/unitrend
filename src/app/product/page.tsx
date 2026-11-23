@@ -22,7 +22,6 @@ export default async function ProductPage() {
         showType: category.showType,
         showBrand: category.showBrand,
         rows: category.products.map((item): ProductRow => ({
-          row: 0,
           productName: item.name,
           type: item.type ?? undefined,
           brand: item.brand ?? undefined,
