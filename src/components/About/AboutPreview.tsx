@@ -1,3 +1,8 @@
+import team from "@/assets/Images/ourstartegy.webp";
+import ButtonLink from "@/components/ui/ButtonLink";
+import Container from "@/components/ui/Container";
+import Reveal from "@/components/ui/Reveal";
+import SectionHeading from "@/components/ui/SectionHeading";
 import Image from "next/image";
 import {
   FiGlobe,
@@ -6,11 +11,6 @@ import {
   FiMapPin,
   FiTruck,
 } from "react-icons/fi";
-import Container from "@/components/ui/Container";
-import SectionHeading from "@/components/ui/SectionHeading";
-import ButtonLink from "@/components/ui/ButtonLink";
-import Reveal from "@/components/ui/Reveal";
-import team from "@/assets/Images/ourstartegy.webp";
 
 const highlights = [
   {
@@ -43,7 +43,7 @@ const AboutPreview = () => (
   <section className="bg-white py-20 lg:py-28">
     <Container className="grid items-center gap-16 lg:grid-cols-2 lg:gap-20 2xl:gap-24">
       <Reveal className="relative">
-        <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] border border-line bg-sand">
+        <div className="relative aspect-4/3 overflow-hidden rounded-4xl border border-line bg-sand">
           <Image
             src={team}
             alt="The Unitrend team working together around a table"
@@ -53,7 +53,7 @@ const AboutPreview = () => (
           />
           <div
             aria-hidden="true"
-            className="absolute inset-0 bg-gradient-to-tr from-primary/30 via-transparent to-transparent"
+            className="absolute inset-0 bg-linear-to-tr from-primary/30 via-transparent to-transparent"
           />
         </div>
 
